@@ -14,7 +14,7 @@ function Turtle(x, y) {
 
   this.matchCase = [
     /(setpencolor|setpensize|pendown|penup).*/ig,
-    /\w\s{0,}$/ig,
+    /\w{0,}$/ig,
     /\w.*?\s\d{1,}$/ig,
     /(repeat)\s\d{1,}\s\[(.*?)\]$/ig
   ];
@@ -95,7 +95,7 @@ function Turtle(x, y) {
         }
       }
       self.pencolor = Array.prototype.slice.call(tmpC, 0);
-      // console.log(self.pencolor, tmpC);
+      console.log(self.pencolor, tmpC);
     },
     'SETPENSIZE': function (value, data) {
       let tmpS = [];
@@ -140,7 +140,7 @@ Turtle.prototype._executeMove = function (data) {
 
   for (j in this.rules) {
     if (data[0].toUpperCase() === j) {
-      if (isNaN(data[1])) {
+      if (data[1] && isNaN(data[1])) {
         for (f in this.functions) {
           if (f === data[1]) {
             this.rules[j](this.functions[f](data[2]), data);
@@ -217,11 +217,11 @@ Turtle.prototype._executeRepeat = function (match) {
  * @param {string} text 
  */
 Turtle.prototype.move = function (text) {
-  console.log({text});
   for (let m = 0; m < this.matchCase.length; m++) {
     let match = text.match(this.matchCase[m]);
     if (match) {
       let data = match[0].split(' ');
+      console.log(this.matchCase[m],data)
       this._executeMove(data);
       
       if (data[0] == 'repeat') {
