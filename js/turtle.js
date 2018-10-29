@@ -1,5 +1,21 @@
+/**
+ * @class Turtle
+ * @param {*} x 
+ * @param {*} y 
+ * @author AnuragHazra<hazru.anurag@gmail.com>
+ */
+
+/**
+ * FUN COMMANDS
+ * repeat 6 [fd 100 rt 360/6]
+ * repeat 50 [fd 150 rt 6/2 lt 180/2 fd 5 bk 1]
+ * repeat 150 [rt 45 fd 200 rt 1 lt 515151/2 fd 500 bk 1]
+ * repeat 150 [rt 25 fd 200 rt 1 lt 9000/2]
+ * repeat 50 [fd 150 rt {1/2} lt {180}/2 fd 5 bk 1]
+ * repeat 150 [rt 15 fd repcount*2 rt 1 lt 9000/2]
+ */
 function Turtle(x, y) {
-  this.pos = new Vector(w / 2, h / 2);
+  this.pos = new Vector(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
 
   this.angle = Vector.fromAngle(radians(-90));
 
@@ -12,6 +28,7 @@ function Turtle(x, y) {
 
   this.lines = [];
 
+  //regEx
   this.matchCase = [
     /(setpencolor|setpensize|pendown|penup).*/ig,
     /\w{0,}$/ig,
@@ -19,6 +36,8 @@ function Turtle(x, y) {
     /(repeat)\s\d{1,}\s\[(.*?)\]$/ig
   ];
 
+
+  // alternate commands
   this.alterCommands = {
     'FD': 'FORWARD',
     'BK': 'BACK',
@@ -33,6 +52,7 @@ function Turtle(x, y) {
     'SETPENCOLOR': 'SETPENCOLOR',
   }
 
+  
   this.functions = {
     'sin': function (value) {
       return Math.sin(value)
@@ -43,6 +63,8 @@ function Turtle(x, y) {
   }
 
   let self = this;
+
+  // RULES
   this.rules = {
     'RT': function (value) {
       self.angle.rotate(radians(value));
@@ -122,6 +144,7 @@ function Turtle(x, y) {
   }
 }
 
+
 Turtle.prototype._parseArray = function (value) {
   let v = value.replace('[', '')
   v = v.replace('[ ', '');
@@ -131,6 +154,7 @@ Turtle.prototype._parseArray = function (value) {
 }
 
 Turtle.prototype._executeMove = function (data) {
+  // check alternate commands
   for (const i in this.alterCommands) {
     let string = data[0].toUpperCase();
     if (string === i || string === this.alterCommands[i]) {
@@ -138,6 +162,7 @@ Turtle.prototype._executeMove = function (data) {
     }
   }
 
+  // check if rules are valid
   for (j in this.rules) {
     if (data[0].toUpperCase() === j) {
       if (data[1] && isNaN(data[1])) {
@@ -156,24 +181,17 @@ Turtle.prototype._executeMove = function (data) {
 }
 
 
-
+/**
+ * @method _executeRepeat
+ * The repeat commands
+ */
 Turtle.prototype._executeRepeat = function (match) {
-  // repeat 6 [fd 100 rt 360/6]
-  // repeat 50 [fd 150 rt 6/2 lt 180/2 fd 5 bk 1]
-  // repeat 150 [rt 45 fd 200 rt 1 lt 515151/2 fd 500 bk 1]
-  // repeat 150 [rt 25 fd 200 rt 1 lt 9000/2]
-  // repeat 50 [fd 150 rt {1/2} lt {180}/2 fd 5 bk 1]
-  // repeat 150 [rt 15 fd repcount*2 rt 1 lt 9000/2]
-
   // parse variables
   let data = match.split('[') || match.split('[ ');
   let times = parseInt(data[0].replace('repeat ', ''));
   let commands = this._parseArray(data[1]);
   commands = commands.split(' ').filter(Boolean);
 
-
-  // if i start from 0 it will multiply by 0 so nothing happnse (0*5)=0
-  // ( 1 hour of debugging for this small and silly mistake )
   let repcount = 1;
   for (let i = 0; i < times; i++) {
 

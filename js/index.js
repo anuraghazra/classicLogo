@@ -3,16 +3,16 @@
  * @author AnuragHazra <hazru.anurag@gmail.com>
  */
 
+let c;
+let canvas = document.getElementById('c');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight - 150;
+c = new Candy(canvas, window.innerWidth, window.innerHeight - 150);
+c.smooth('high');
+let w = CANVAS_WIDTH;
+let h = CANVAS_HEIGHT;
+
 window.onload = function () {
-
-  let canvas = document.getElementById('c');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight - 150;
-  const c = new Candy(canvas);
-  c.smooth('high')
-
-  let w = CANVAS_WIDTH;
-  let h = CANVAS_HEIGHT;
 
   let inputCommand = document.getElementById('commands');
   let historyConsole = document.getElementById('history');
@@ -47,12 +47,13 @@ window.onload = function () {
 
   const turtle = new Turtle();
 
+  animate();
   function animate() {
     c.clear();
 
     turtle.render();
 
-    c.loop();
+    c.loop(animate);
   }
 
 }

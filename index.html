@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>MSW LOGO</title>
+  <title>LOGO</title>
 
   <style>
     * {
@@ -78,7 +78,7 @@
     <div class="commander">
       <div id="history" contenteditable="true"></div>
       <div class="console">
-        <input id="commands" value="repeat 4 [ fd 100 rt 90 ]"></input>
+        <input id="commands" value="repeat 150 [rt 15 fd repcount*2 rt 1 lt 9000/2]" />
         <button id="exeBtn">execute</button>
       </div>
     </div>
@@ -86,7 +86,9 @@
   </div>
 
   <script src="./js/p5Vector.js"></script>
-  <script src="https://rawgit.com/anuraghazra/Candy.js/master/dist/Candy.build.js"></script>
+  <!-- <script src="https://rawgit.com/anuraghazra/Candy.js/master/dist/Candy.build.js"></script> -->
+  <!-- <script src="../src/lib/Candy.js"></script> -->
+  <script src="./js/Candy.js"></script>
   <script src="./js/turtle.js"></script>
   <script src="./js/index.js"></script>
 </body>
