@@ -2,6 +2,8 @@
 
 ## Logo Interpeter Made With Javascript
 
+### credits - 'Anurag Hazra'
+
 // supported commands
 
 > FD / FORWARD
@@ -33,3 +35,8 @@
 * repeat 150 [rt 25 fd 200 rt 1 lt 9000/2]
 * repeat 50 [fd 150 rt {1/2} lt {180}/2 fd 5 bk 1]
 * repeat 150 [rt 15 fd repcount*2 rt 1 lt 9000/2]
+
+
+made with <3 and Javascript.
+
+hazru.anurag@gmail.com
