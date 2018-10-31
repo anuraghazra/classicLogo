@@ -24,9 +24,6 @@
 
 > PD / PENDOWN
 
-> SETPENSIZE / SETPENSIZE
-
-> SETPENCOLOR / SETPENCOLOR
 
 # Fun Commands
 * repeat 6 [fd 100 rt 360/6]

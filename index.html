@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-  <title>LOGO</title>
+  <title>Classic LOGO</title>
 
   <style>
     * {
@@ -71,14 +72,14 @@
 </head>
 <body>
   
-  <canvas id="c"></canvas>
+  <!-- <canvas id="c"></canvas> -->
 
   <div class="ui">
 
     <div class="commander">
       <div id="history" contenteditable="true"></div>
       <div class="console">
-        <input id="commands" value="repeat 150 [rt 15 fd repcount*2 rt 1 lt 9000/2]" />
+        <input id="commands" value="repeat 150 [rt 15 fd repcount*2 rt 1 lt 9000/2]" spellcheck="false"/>
         <button id="exeBtn">execute</button>
       </div>
     </div>
@@ -88,7 +89,8 @@
   <script src="./js/p5Vector.js"></script>
   <!-- <script src="https://rawgit.com/anuraghazra/Candy.js/master/dist/Candy.build.js"></script> -->
   <!-- <script src="../src/lib/Candy.js"></script> -->
-  <script src="./js/Candy.js"></script>
+  <!-- <script src="./js/Candy.js"></script> -->
+  <script src="./js/p5min.js"></script>
   <script src="./js/turtle.js"></script>
   <script src="./js/index.js"></script>
 </body>

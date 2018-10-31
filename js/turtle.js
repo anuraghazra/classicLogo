@@ -11,11 +11,11 @@
  * repeat 50 [fd 150 rt 6/2 lt 180/2 fd 5 bk 1]
  * repeat 150 [rt 45 fd 200 rt 1 lt 515151/2 fd 500 bk 1]
  * repeat 150 [rt 25 fd 200 rt 1 lt 9000/2]
- * repeat 50 [fd 150 rt {1/2} lt {180}/2 fd 5 bk 1]
+ * repeat 50 [fd 150 rt 1 lt 180/2 fd 5 bk 1]
  * repeat 150 [rt 15 fd repcount*2 rt 1 lt 9000/2]
  */
 function Turtle(x, y) {
-  this.pos = new Vector(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+  this.pos = new Vector(cw / 2, ch / 2);
 
   this.angle = Vector.fromAngle(radians(-90));
 
@@ -110,6 +110,7 @@ function Turtle(x, y) {
 
     'SETPENCOLOR': function (value, data) {
       let tmpC = [];
+      console.log(value)
       for (let i = 0; i < data.length; i++) {
         let d = self._parseArray(data[i]);
         if (!isNaN(d)) {
@@ -117,7 +118,6 @@ function Turtle(x, y) {
         }
       }
       self.pencolor = Array.prototype.slice.call(tmpC, 0);
-      console.log(self.pencolor, tmpC);
     },
     'SETPENSIZE': function (value, data) {
       let tmpS = [];
@@ -131,7 +131,7 @@ function Turtle(x, y) {
     },
 
     'HOME': function () {
-      self.pos = new Vector(w / 2, h / 2);
+      self.pos = new Vector(cw / 2, ch / 2);
       self.angle = Vector.fromAngle(radians(-90));
       self.hideTurtle = false;
       self.pencolor = [0, 0, 0];
@@ -145,6 +145,7 @@ function Turtle(x, y) {
 }
 
 
+// avoid this
 Turtle.prototype._parseArray = function (value) {
   let v = value.replace('[', '')
   v = v.replace('[ ', '');
@@ -153,6 +154,11 @@ Turtle.prototype._parseArray = function (value) {
   return v
 }
 
+
+/**
+ * @method _executeMove()
+ * @param {array} data 
+ */
 Turtle.prototype._executeMove = function (data) {
   // check alternate commands
   for (const i in this.alterCommands) {
@@ -184,6 +190,8 @@ Turtle.prototype._executeMove = function (data) {
 /**
  * @method _executeRepeat
  * The repeat commands
+ * * sorry, when i wrote this code only me and god knows how it works
+ * * now only god knows how it works
  */
 Turtle.prototype._executeRepeat = function (match) {
   // parse variables
@@ -211,7 +219,7 @@ Turtle.prototype._executeRepeat = function (match) {
         if (commands[k].toUpperCase() === func) {
           // repcount
           if (commands[k + 1] === 'repcount') {
-            debugger;
+            // debugger;
             // console.log(func, repcount)
             this.rules[func](eval(repcount));
             break;
@@ -255,30 +263,24 @@ Turtle.prototype.move = function (text) {
  * Render Turtle
  */
 Turtle.prototype.render = function () {
+  // console.log(this.pencolor)
   if (!this.hideTurtle) {
     let size = 15;
-    c.stroke('black');
-    c.strokeWeight(1);
-    c.push();
-    c.translate(this.pos.x, this.pos.y);
-    c.rotate(this.angle.heading());
-    c.begin();
-    c.from(size, 0);
-    c.to(0, -size);
-    c.to(0, size);
-    c.to(size, 0);
-    c.stroke();
-    c.close();
-    c.pop();
+    stroke(0);
+    strokeWeight(1);
+    push();
+    translate(this.pos.x, this.pos.y);
+    rotate(this.angle.heading());
+    line(size,0,0,-size)
+    line(0,size,size,0);
+    pop();
   }
   // draw lines
   for (let i = 0; i < this.lines.length; i++) {
-    c.begin();
-    c.stroke(this.lines[i][2]);
-    c.strokeWeight(this.lines[i][3][1]);
-    c.from(this.lines[i][0].x, this.lines[i][0].y);
-    c.to(this.lines[i][1].x, this.lines[i][1].y);
-    c.stroke();
-    c.close();
+    // console.log(this.lines[i][2])
+    stroke(this.lines[i][2]);
+    strokeWeight(this.lines[i][3][1]);
+    line(this.lines[i][0].x, this.lines[i][0].y,this.lines[i][1].x, this.lines[i][1].y)
   }
 }
+// setpencolor [255,0,0]
