@@ -1,4 +1,4 @@
-# MSW LOGO Interpeter
+# Classic LOGO Interpeter
 
 ## Logo Interpeter Made With Javascript
 
