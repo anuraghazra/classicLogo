@@ -17,6 +17,15 @@
         "maintenance",
         "ideas"
       ]
+    },
+    {
+      "login": "Shudarshan",
+      "name": "Shudarshan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/32707506?v=4",
+      "profile": "https://github.com/Shudarshan",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
