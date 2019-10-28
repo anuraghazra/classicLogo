@@ -1,5 +1,5 @@
 # Classic LOGO Interpeter
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 ## Logo Interpeter Made With Javascript
 
@@ -48,6 +48,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://anuraghazra.github.io"><img src="https://avatars3.githubusercontent.com/u/35374649?v=4" width="100px;" alt="Anurag Hazra"/><br /><sub><b>Anurag Hazra</b></sub></a><br /><a href="https://github.com/anuraghazra/classicLogo/commits?author=anuraghazra" title="Code">💻</a> <a href="https://github.com/anuraghazra/classicLogo/commits?author=anuraghazra" title="Documentation">📖</a> <a href="#tool-anuraghazra" title="Tools">🔧</a> <a href="#maintenance-anuraghazra" title="Maintenance">🚧</a> <a href="#ideas-anuraghazra" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/Shudarshan"><img src="https://avatars2.githubusercontent.com/u/32707506?v=4" width="100px;" alt="Shudarshan"/><br /><sub><b>Shudarshan</b></sub></a><br /><a href="https://github.com/anuraghazra/classicLogo/commits?author=Shudarshan" title="Code">💻</a></td>
   </tr>
 </table>
 
