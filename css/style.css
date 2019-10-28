@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  canvas {
+    outline: 1px solid gray;
+  }
+
+  .ui {
+    padding: 0px;
+    /* border: 1px solid gray; */
+  }
+  .commander {
+    padding: 5px;
+  }
+  .commander input, #history {
+    font-family: 'Lucida Console';
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid gray;
+    outline: none;
+    resize: vertical;
+    overflow-y: scroll;
+  }
+  .commander #history {
+    color: #414141;
+    height: 80px;
+    user-select: none;
+  }
+  .console {
+    display: flex;
+  }
+  .commander input {
+    flex: 1 1 1;
+    padding: 5px;
+    padding-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+
+  button {
+    flex: 1;
+    flex-basis: 150px;
+    outline: 1px solid gray;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #6b6b6b;
+    color: white;
+  }
+  button:active {
+    background-color: dimgray;
+    color: white;
+  }
+
+  #history p {
+    margin-top: 10px;
+    font-size: 12px;
+  }
